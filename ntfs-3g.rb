@@ -32,15 +32,7 @@ class Ntfs3g < Formula
   depends_on "pkg-config" => :build
   depends_on "coreutils" => :test
   depends_on "gettext"
-
-  on_macos do
-    deprecate! date: "2020-11-10", because: "requires FUSE"
-    depends_on :osxfuse
-  end
-
-  on_linux do
-    depends_on "libfuse"
-  end
+  depends_on :"osxfuse"
 
   def install
     ENV.append "LDFLAGS", "-lintl"
